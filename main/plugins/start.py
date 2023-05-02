@@ -1,4 +1,4 @@
-from main import AUTH_USER
+from main import bot, AUTH_USER
 
 @bot.on(events.NewMessage(incoming=True, pattern='/start'))
 async def strt(event):
