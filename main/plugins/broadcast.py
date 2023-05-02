@@ -4,7 +4,8 @@ from main import bot
 from telethon import events, Button
 
 CHAT_TO_BROADCAST = [-1001710923802,
-                     -1001802580312]
+                     -1001802580312,
+                     -1001479936325]
 
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
