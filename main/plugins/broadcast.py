@@ -1,4 +1,6 @@
 import asyncio
+from io import BytesIO
+from meme_generator import MemeGenerator
 from main import bot
 from main import AUTH_USER as AUTH_USERS
 
@@ -11,7 +13,10 @@ CHAT_TO_BROADCAST = [-1001710923802,
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
     if event.sender_id not in AUTH_USERS:
-        await bot.send_message(event.chat_id, 'Wrong direction ❌', file='https://api.memegen.link/images/restrict/_/wrong_direction.png')
+        meme_url = meme.generate_meme('Wrong direction', 'You are not authorized to use this command', 'restricted')
+        meme_data = requests.get(meme_url).content
+        file = BytesIO(meme_data)
+        await bot.send_file(event.chat_id, file, caption='Wrong direction ❌')
         return
     
     async with bot.conversation(event.chat_id) as conv:
