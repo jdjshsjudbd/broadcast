@@ -1,11 +1,6 @@
 telethon
-cryptg
-psycopg2
-dnspython
 rich
 datetime
 python-dotenv
-gogoanime-api
 wget
 pillow
-hachoir
