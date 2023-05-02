@@ -1,7 +1,7 @@
 import glob
 import os
 from pathlib import Path
-from core.utilities import load_plugins
+from main.utilities import load_plugins
 from rich.console import Console
 
 from rich.table import Table 
