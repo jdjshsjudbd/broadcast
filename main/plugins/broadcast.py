@@ -1,5 +1,5 @@
 import asyncio
-from main import bot
+from main import bot, AUTH_USERS
 
 from telethon import events, Button
 
@@ -9,6 +9,10 @@ CHAT_TO_BROADCAST = [-1001710923802,
 
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
+    if event.sender_id not in AUTH_USERS:
+        await bot.send_message(event.chat_id, 'Wrong direction ❌', file='https://api.memegen.link/images/restrict/_/wrong_direction.png')
+        return
+    
     async with bot.conversation(event.chat_id) as conv:
         await conv.send_message('Please select a time interval (in minutes):', buttons=[
             [Button.inline('1', data='1'), Button.inline('5', data='5')],
