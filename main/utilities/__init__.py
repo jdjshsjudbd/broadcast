@@ -8,11 +8,11 @@ from rich.table import Table
 console = Console()
 
 def load_plugins(plugin_name):
-    path = Path(f"core/plugins/{plugin_name}.py")
-    name = "core.plugins.{}".format(plugin_name)
+    path = Path(f"main/plugins/{plugin_name}.py")
+    name = "main.plugins.{}".format(plugin_name)
     spec = importlib.util.spec_from_file_location(name, path)
     load = importlib.util.module_from_spec(spec)
     load.logger = logging.getLogger(plugin_name)
     spec.loader.exec_module(load)
-    sys.modules["core.plugins." + plugin_name] = load
+    sys.modules["main.plugins." + plugin_name] = load
     console.print("Successfully Imported ( " + plugin_name + " ) to system", style='green')
