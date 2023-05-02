@@ -1,5 +1,6 @@
 import asyncio
-from main import bot, AUTH_USERS
+from main import bot
+from main import AUTH_USER as AUTH_USERS
 
 from telethon import events, Button
 
