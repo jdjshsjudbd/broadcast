@@ -1,5 +1,5 @@
 from main import bot, AUTH_USER
-
+from telethon import events, Button
 @bot.on(events.NewMessage(incoming=True, pattern='/start'))
 async def strt(event):
   name = event.sender.first_name
