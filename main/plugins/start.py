@@ -1,6 +1,23 @@
 from main import bot, AUTH_USER
 from telethon import events, Button, functions, types
 
+MSG = """
+Hey there👋, Welcome!
+
+📕If you want to purchase the subscription of ADs bot, Read this :
+
+⚠️Details:
+✓  Per 15/20/30 mins
+✓  It broadcasts 50 times per day 
+✓ More than 200 connected marketplaces 
+
+⚠️PRICING:
+🚥For 1 week: 20$
+🚥For 2 weeks: 40$
+🚥For 1 month: 70$
+
+"""
+
 @bot.on(events.NewMessage(incoming=True, pattern='/start'))
 async def strt(event):
     name = event.sender.first_name
@@ -8,11 +25,9 @@ async def strt(event):
     user_name = event.sender.username 
     if event.sender_id != AUTH_USER:
         buttons = [
-            [Button.inline("1 weeks", data="oneweek"), Button.url("Purchase now", "t.me/xdcomrade")],
-            [Button.inline("2 weeks", data="twoweek"), Button.url("Purchase now", "t.me/xdcomrade")],
-            [Button.inline("3 weeks", data="threeweeks"), Button.url("Purchase now", "t.me/xdcomrade")],
-            [Button.inline("1 months", data="onemonths"), Button.url("Purchase now", "t.me/xdcomrade")]
+            [Button.inline("Contact to buy ⬇️")],
+            [Button.url("comrade", url="t.me/comradexd"), Button.url("Shashank", "t.me/maybeshashank")],
         ]
-        await bot.send_message(event.sender_id, "__Hey there__\n\nI'm ad bot, i can do promotion of your content, products aything you want to promote.\n\n**Use the below buttons to get subscription information ", buttons=buttons)
+        await bot.send_message(event.sender_id, MSG , buttons=buttons)
     else:
         await bot.send_message(event.sender_id, 'hello master')
