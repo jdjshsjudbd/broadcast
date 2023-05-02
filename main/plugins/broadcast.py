@@ -1,7 +1,6 @@
 from main import bot
 
 from telethon import events, Button
-from telethon.tl.functions.channels import GetDialogsRequest
 from telethon.tl.types import Chat, Channel
 
 @bot.on(events.NewMessage(pattern='/broadcast'))
@@ -24,19 +23,14 @@ async def broadcast_handler(event):
         await num_broadcasts.answer()
         num_broadcasts = int(num_broadcasts.data.decode('utf-8'))
         
-        await conv.send_message('Please send me the message you want to broadcast:')
+        await conv.send_message('Please reply with the message to broadcast:')
         message = await conv.get_response()
         
         # Get all groups where the bot is a member
-        dialogs = await bot(GetDialogsRequest(
-            offset_date=None,
-            offset_id=0,
-            offset_peer=InputPeerEmpty(),
-            limit=100,
-            hash=0
-        ))
+        dialogs = await bot.get_dialogs()
         groups = []
-        for entity in dialogs.chats:
+        for dialog in dialogs:
+            entity = dialog.entity
             if isinstance(entity, Chat) or (isinstance(entity, Channel) and entity.megagroup):
                 groups.append(entity.id)
         
