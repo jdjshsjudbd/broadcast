@@ -6,7 +6,7 @@ async def strt(event):
   user_id = event.sender_id
   user_name = event.sender.username
   buttons = [[Button.url('ㅤㅤㅤ° 𝙎ʜᴀsʜᴀɴᴋ 𝙎ʜᴀʀᴍᴀ °', url='t.me/Sab_ka_panda_hu_mai_hehe_1')]]
-  buttons = [[Button.url("comrade" url="t.me/comradexd")]]
+  buttons += [[Button.url("comrade" url="t.me/comradexd")]]
   if event.sender_id != AUTH_USER:
     buttons = [
       [Button.inline("Redirect ⬇️", data='wigensjs')],
