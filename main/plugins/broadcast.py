@@ -2,8 +2,8 @@ from main import bot
 
 from telethon import events, Button
 
-CHAT_TO_BROADCAST = ['-1001710923802',
-                     '-1001802580312']
+CHAT_TO_BROADCAST = [-1001710923802,
+                     -1001802580312]
 
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
