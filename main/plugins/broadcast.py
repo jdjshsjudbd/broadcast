@@ -1,6 +1,5 @@
 import asyncio
 from io import BytesIO
-from meme_generator import MemeGenerator
 from main import bot
 from main import AUTH_USER as AUTH_USERS
 
