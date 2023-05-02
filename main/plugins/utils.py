@@ -10,8 +10,8 @@ async def welcome_handler(event):
         quote = data[0]['q']
         author = data[0]['a']
         #imageres = requests.get('https://api.unsplash.com/photos/random', headers={
-            'Authorization': 'Client-ID HH4vCat4VWlwVhtg9KDNP9imZf_PBuzz8k8yAZ9C8qc'
-        })
+            #'Authorization': 'Client-ID HH4vCat4VWlwVhtg9KDNP9imZf_PBuzz8k8yAZ9C8qc'
+        #})
         #imgdata = response.json()
         #photo_url = imgdata['urls']['regular']
 
