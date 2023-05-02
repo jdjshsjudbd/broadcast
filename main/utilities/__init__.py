@@ -1,0 +1,18 @@
+import sys
+import logging
+import importlib
+from pathlib import Path
+from rich.console import Console
+from rich.table import Table
+
+console = Console()
+
+def load_plugins(plugin_name):
+    path = Path(f"core/plugins/{plugin_name}.py")
+    name = "core.plugins.{}".format(plugin_name)
+    spec = importlib.util.spec_from_file_location(name, path)
+    load = importlib.util.module_from_spec(spec)
+    load.logger = logging.getLogger(plugin_name)
+    spec.loader.exec_module(load)
+    sys.modules["core.plugins." + plugin_name] = load
+    console.print("Successfully Imported ( " + plugin_name + " ) to system", style='green')
