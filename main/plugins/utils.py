@@ -3,7 +3,7 @@ from main import bot
 from telethon import events
 
 @bot.on(events.ChatAction)
-welcome_handler(event):
+async def welcome_handler(event):
     if event.user_added and event.user_id == bot.uid:
         # Fetch a random quote from the ZenQuotes API
         response = requests.get('https://zenquotes.io/api/random')
@@ -18,4 +18,4 @@ welcome_handler(event):
 
         # Send welcome message to group
         message = f"Thanks for adding me to this group! Here's a thought for you:\n\n**{quote}**\n— {author}"
-         await event.respond(message)
+        await event.respond(message)
