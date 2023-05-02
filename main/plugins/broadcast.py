@@ -12,7 +12,7 @@ async def broadcast_handler(event):
     async with bot.conversation(event.chat_id) as conv:
         await conv.send_message('Please select a time interval (in minutes):', buttons=[
             [Button.inline('1', data='1'), Button.inline('5', data='5')],
-            [Button.inline('10', data='10'), Button.inline('30', data='30')]
+            [Button.inline('10', data='10'), Button.inline('30', data='30')],
             [Button.inline('1hrs ', data='60'), Button.inline('1.5hrs', data='6')],
             [Button.inline('2hrs', data='120')],
         ])
