@@ -1,4 +1,5 @@
 import requests
+from main import bot
 from telethon import events
 
 @bot.on(events.ChatAction)
