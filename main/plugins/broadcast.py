@@ -10,15 +10,23 @@ CHAT_TO_BROADCAST = [-1001710923802,
                      -1001802580312,
                      -1001479936325]
 
+MEME_API_URL = 'https://api.imgflip.com/caption_image'
+
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
     if event.sender_id not in AUTH_USERS:
-        meme_url = 'https://meme-api.herokuapp.com/gimme/restricted'
-        response = requests.get(meme_url)
+        params = {
+            'template_id': 61579,
+            'username': 'your-username',
+            'password': 'your-password',
+            'text0': 'You are not authorized',
+            'text1': 'to use this command'
+        }
+        response = requests.post(MEME_API_URL, params=params)
         data = response.json()
-        meme_data = requests.get(data['url']).content
-        file = BytesIO(meme_data)
-        await bot.send_file(event.chat_id, file, caption='You are not authorized to use this command ❌')
+        if data['success']:
+            meme_url = data['data']['url']
+            await bot.send_message(event.chat_id, 'Wrong direction ❌', file=meme_url)
         return
     
     async with bot.conversation(event.chat_id) as conv:
