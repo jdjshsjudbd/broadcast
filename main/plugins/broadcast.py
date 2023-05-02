@@ -1,3 +1,4 @@
+import asyncio
 from main import bot
 
 from telethon import events, Button
