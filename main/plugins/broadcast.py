@@ -17,8 +17,8 @@ async def broadcast_handler(event):
     if event.sender_id not in AUTH_USERS:
         params = {
             'template_id': 61579,
-            'username': 'your-username',
-            'password': 'your-password',
+            'username': 'theshashankk',
+            'password': '@Shashank009',
             'text0': 'You are not authorized',
             'text1': 'to use this command'
         }
