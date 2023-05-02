@@ -22,7 +22,10 @@ MOD_NOLOAD = []
 API_ID = int(getenv("API_ID", 1))
 API_HASH = getenv('API_HASH')
 BOT_TOKEN = getenv('BOT_TOKEN')
-AUTH_USER = list(int(getenv("AUTH_USER")))
+AUTH_USER = [
+  '5764034150',
+  '2140114063',
+]
 
 
 bot = tc('Shashank', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
