@@ -26,7 +26,7 @@ async def strt(event):
     if event.sender_id != AUTH_USER:
         buttons = [
             [Button.inline("Contact to buy ⬇️")],
-            [Button.url("comrade", url="t.me/comradexd"), Button.url("Shashank", "t.me/maybeshashank")],
+            [Button.url("comrade", url="t.me/xD_Comrade"), Button.url("Shashank", "t.me/maybeshashank")],
         ]
         await bot.send_message(event.sender_id, MSG , buttons=buttons)
     else:
