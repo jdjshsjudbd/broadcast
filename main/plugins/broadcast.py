@@ -13,6 +13,8 @@ async def broadcast_handler(event):
         await conv.send_message('Please select a time interval (in minutes):', buttons=[
             [Button.inline('1', data='1'), Button.inline('5', data='5')],
             [Button.inline('10', data='10'), Button.inline('30', data='30')]
+            [Button.inline('1hrs ', data='60'), Button.inline('1.5hrs', data='6')],
+            [Button.inline('2hrs', data='120')],
         ])
         time_interval = await conv.wait_event(events.CallbackQuery)
         await time_interval.answer()
@@ -21,7 +23,10 @@ async def broadcast_handler(event):
         await conv.send_message('Please select how many times to broadcast:', buttons=[
             [Button.inline('1', data='1'), Button.inline('2', data='2')],
             [Button.inline('3', data='3'), Button.inline('4', data='4')],
-            [Button.inline('5', data='5')]
+            [Button.inline('5', data='5'), Button.inline('6', data='6')],
+            [Button.inline('7', data='5'), Button.inline('8', data='6')],
+            [Button.inline('9', data='5'), Button.inline('10', data='6')],
+            [Button.inline('11', data='5'), Button.inline('12', data='6')],
         ])
         num_broadcasts = await conv.wait_event(events.CallbackQuery)
         await num_broadcasts.answer()
