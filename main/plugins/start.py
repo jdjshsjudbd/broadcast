@@ -11,7 +11,7 @@ async def strt(event):
             [Button.inline("Redirect ⬇️", data='wigensjs')],
             [Button.url(name, url=f"t.me/{user_name}")]
         ]
-        await bot.send_file(user_id, file='https://telegra.ph/file/1f72ad102d6194d02bb13.jpg', caption='**Hey there**\n\n__Use below button to get links and about section__\n\n**Have a nice day**')
+        await bot.send_file(user_id, file='https://telegra.ph/file/1f72ad102d6194d02bb13.jpg', caption='**Hey there**\n\n__Contact @xD_Comrade to purchase subscription of AD Bot__\n\n**Have a nice day**')
         await bot(functions.messages.SendInlineBotResultRequest(
             user_id,
             query_id='bot-started',
