@@ -4,7 +4,7 @@ from main import bot, AUTH_USER
 async def strt(event):
   name = event.sender.first_name
   user_id = event.sender_id
-  user_name = event.sender.username #
+  user_name = event.sender.username 
   if event.sender_id != AUTH_USER:
     buttons = [
       [Button.inline("Redirect ⬇️", data='wigensjs')],
