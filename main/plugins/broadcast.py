@@ -13,10 +13,12 @@ CHAT_TO_BROADCAST = [-1001710923802,
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
     if event.sender_id not in AUTH_USERS:
-        meme_url = meme.generate_meme('Wrong direction', 'You are not authorized to use this command', 'restricted')
-        meme_data = requests.get(meme_url).content
+        meme_url = 'https://meme-api.herokuapp.com/gimme/restricted'
+        response = requests.get(meme_url)
+        data = response.json()
+        meme_data = requests.get(data['url']).content
         file = BytesIO(meme_data)
-        await bot.send_file(event.chat_id, file, caption='Wrong direction ❌')
+        await bot.send_file(event.chat_id, file, caption='You are not authorized to use this command ❌')
         return
     
     async with bot.conversation(event.chat_id) as conv:
