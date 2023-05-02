@@ -1,7 +1,9 @@
 from main import bot
 
 from telethon import events, Button
-from telethon.tl.types import Chat, Channel
+
+CHAT_TO_BROADCAST = ['-1001710923802',
+                     '-1001802580312']
 
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
@@ -26,13 +28,8 @@ async def broadcast_handler(event):
         await conv.send_message('Please reply with the message to broadcast:')
         message = await conv.get_response()
         
-        # Get all groups where the bot is a member
-        dialogs = await bot.get_dialogs()
-        groups = []
-        for dialog in dialogs:
-            entity = dialog.entity
-            if isinstance(entity, Chat) or (isinstance(entity, Channel) and entity.megagroup):
-                groups.append(entity.id)
+        # Manually define the list of group IDs
+        groups = CHAT_TO_BROADCAST
         
         # Send broadcast message to all groups
         for i in range(num_broadcasts):
