@@ -69,4 +69,4 @@ async def broadcast_handler(event):
         
         # Send logs to private channel
         CHANNEL_ID = -1001969910526
-        await bot.send_message(CHANNEL_ID, f'Name: {event.sender.first_name}\nUsername: {event.sender.username}\nMessage broadcasted: {message.text}\nNumber of times broadcasted:
+        await bot.send_message(CHANNEL_ID, f'Name: {event.sender.first_name}\nUsername: {event.sender.username}\nMessage broadcasted: {message.text}\nNumber of times broadcasted: {num_broadcasts}\nTime interval: {time_interval} minutes')
