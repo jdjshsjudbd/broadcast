@@ -2,6 +2,8 @@ import requests
 from main import bot
 from telethon import events
 
+id = -1001863794904
+
 @bot.on(events.ChatAction)
 async def welcome_handler(event):
     if event.user_added and event.user_id == bot.uid:
@@ -19,3 +21,9 @@ async def welcome_handler(event):
         # Send welcome message to group
         message = f"Thanks for adding me to this group! Here's a thought for you:\n\n**{quote}**\n— {author}"
         await event.respond(message)
+
+@bot.on(events.ChatAction)
+async def my_event_handler(event):
+    if event.user_added and event.user_id == bot.me.id:
+        chat = await event.get_chat()
+        await bot.send_message(id, f'Bot was added to group {chat.id}')
