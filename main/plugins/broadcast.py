@@ -31,28 +31,34 @@ async def broadcast_handler(event):
     
     async with bot.conversation(event.chat_id) as conv:
         await conv.send_message('Please select a time interval (in minutes):', buttons=[
-            [Button.inline('1', data='1'), Button.inline('5', data='5')],
             [Button.inline('10', data='10'), Button.inline('30', data='30')],
-            [Button.inline('1hrs ', data='60'), Button.inline('1.5hrs', data='6')],
-            [Button.inline('2hrs', data='120')],
+            [Button.inline('1hrs ', data='60'), Button.inline('2hrs', data='120')],
+            [Button.inline('3hrs', data='180'), Button.inline('4hrs', data='240')],
+            [Button.inline('5hrs', data='300'), Button.inline('6hrs', data='360')],
+            [Button.inline('7hrs', data='420'), Button.inline('8hrs', data='480')],
+            [Button.inline('9hrs', data='540'), Button.inline('10hrs', data='600')],
+            [Button.inline('11hrs', data='660'), Button.inline('12hrs', data='720')],
+
         ])
         time_interval = await conv.wait_event(events.CallbackQuery)
         await time_interval.answer()
         time_interval = int(time_interval.data.decode('utf-8'))
         
         await conv.send_message('Please select how many times to broadcast:', buttons=[
-            [Button.inline('1', data='1'), Button.inline('2', data='2')],
-            [Button.inline('3', data='3'), Button.inline('4', data='4')],
             [Button.inline('5', data='5'), Button.inline('6', data='6')],
-            [Button.inline('7', data='5'), Button.inline('8', data='6')],
-            [Button.inline('9', data='5'), Button.inline('10', data='6')],
-            [Button.inline('11', data='5'), Button.inline('12', data='6')],
+            [Button.inline('7', data='7'), Button.inline('8', data='8')],
+            [Button.inline('9', data='9'), Button.inline('10', data='10')],
+            [Button.inline('11', data='11'), Button.inline('12', data='12')],
+            [Button.inline('13', data='13'), Button.inline('14', data='14')],
+            [Button.inline('15', data='15'), Button.inline('16', data='16')],
+            [Button.inline('17', data='17'), Button.inline('18', data='18')],
+            [Button.inline('19', data='19'), Button.inline('20', data='20')],
         ])
         num_broadcasts = await conv.wait_event(events.CallbackQuery)
         await num_broadcasts.answer()
         num_broadcasts = int(num_broadcasts.data.decode('utf-8'))
         
-        await conv.send_message('Please reply with the message to broadcast:')
+        await conv.send_message('Please send me the text you want to broadcast:')
         message = await conv.get_response()
         
         # Manually define the list of group IDs
@@ -65,6 +71,5 @@ async def broadcast_handler(event):
             await asyncio.sleep(time_interval * 60)
         
         # Send logs to private channel
-        CHANNEL_LINK = 'REPLACE_WITH_YOUR_CHANNEL_LINK'
         CHANNEL_ID = -1001969910526
         await bot.send_message(CHANNEL_ID, f'Name: {event.sender.first_name}\nUsername: {event.sender.username}\nMessage broadcasted: {message.text}\nNumber of times broadcasted: {num_broadcasts}\nTime interval: {time_interval} minutes')
