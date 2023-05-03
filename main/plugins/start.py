@@ -17,7 +17,7 @@ Hey there👋, Welcome!
 🚥For 1 month: 70$
 
 """
-IMG = "main/utilities/Videoshot_20230503_125153.jpg"
+IMG = "https://telegra.ph/file/acc9e663136c4e2d688dd.jpg"
 
 @bot.on(events.NewMessage(incoming=True, pattern='/start'))
 async def start_handler(event):
