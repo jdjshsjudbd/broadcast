@@ -28,4 +28,4 @@ async def my_event_handler(event):
     me = await bot.get_me()
     if event.user_added and event.user_id == me.id:
         chat = await event.get_chat()
-        await bot.send_message(id, f'Bot was added to group {chat.id}')
+        await bot.send_message(id, f'Bot was added to group -{chat.id}')
