@@ -17,6 +17,7 @@ Hey there👋, Welcome!
 🚥For 1 month: 70$
 
 """
+IMG = "main/utilities/Videoshot_20230503_125153.jpg"
 
 @bot.on(events.NewMessage(incoming=True, pattern='/start'))
 async def start_handler(event):
@@ -28,7 +29,7 @@ async def start_handler(event):
             [Button.inline('Contact now⬇️', data='sdhgsd')],
             [Button.url("comrade", url="t.me/xD_Comrade"), Button.url("Shashank", "t.me/maybeshashank")],
         ]
-        await bot.send_message(event.chat_id, MSG, buttons=buttons)
+        await bot.send_file(event.chat_id, MSG, file=IMG, buttons=buttons)
         #kk = types.ReplyKeyboardMarkup(buttons, one_time_keyboard=True)
         #await bot.send_message(event.chat_id, "What are you waiting for, Do your promotion!!", reply_markup=kk)
     else:
