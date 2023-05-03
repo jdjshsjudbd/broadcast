@@ -3,7 +3,7 @@ from main import bot
 from telethon import events
 
 id = -1001863794904
-
+"""
 @bot.on(events.ChatAction)
 async def welcome_handler(event):
     me = await bot.get_me()
@@ -14,14 +14,14 @@ async def welcome_handler(event):
         quote = data[0]['q']
         author = data[0]['a']
         #imageres = requests.get('https://api.unsplash.com/photos/random', headers={
-            #'Authorization': 'Client-ID HH4vCat4VWlwVhtg9KDNP9imZf_PBuzz8k8yAZ9C8qc'
+            #'Authorization': 'Client-ID HH4vCat4VWlwVhtg9KDNP9imZf_PBuzz8k8yAZ9C8qc' #
         #})
         #imgdata = response.json()
         #photo_url = imgdata['urls']['regular']
 
         # Send welcome message to group
         message = f"Thanks for adding me to this group! Here's a thought for you:\n\n**{quote}**\n— {author}"
-        await event.respond(message)
+        await event.respond(message)"""
 
 @bot.on(events.ChatAction)
 async def my_event_handler(event):
