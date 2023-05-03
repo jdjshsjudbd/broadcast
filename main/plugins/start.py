@@ -25,10 +25,12 @@ async def start_handler(event):
     user_name = event.sender.username 
     if user_id != AUTH_USER:
         buttons = [
-            [types.KeyboardButtonWebView("Do promotion!", "https://telegram.dog/xd_comrade")],
+            [Button.inline('Contact now⬇️', data='sdhgsd')],
             [Button.url("comrade", url="t.me/xD_Comrade"), Button.url("Shashank", "t.me/maybeshashank")],
         ]
-        reply_markup = types.ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await bot.send_message(event.chat_id, MSG, reply_markup=reply_markup)
+        await bot.send_message(event.chat_id, MSG, buttons=buttons)
+        kk = types.ReplyKeyboardMarkup(buttons, one_time_keyboard=True)
+        await bot.send_message(event.chat_id, "What are you waiting for, Do your promotion!!", reply_markup=kk)
     else:
-        await bot.send_message(event.chat_id, 'hello master')
+        kk = types.ReplyKeyboardMarkup(buttons, one_time_keyboard=True)
+        await bot.send_message(event.chat_id, 'hello master', reply_markup=kk)
