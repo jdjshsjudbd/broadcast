@@ -45,14 +45,11 @@ async def broadcast_handler(event):
         time_interval = int(time_interval.data.decode('utf-8'))
         
         await conv.send_message('Please select how many times to broadcast:', buttons=[
-            [Button.inline('5', data='5'), Button.inline('6', data='6')],
-            [Button.inline('7', data='7'), Button.inline('8', data='8')],
-            [Button.inline('9', data='9'), Button.inline('10', data='10')],
-            [Button.inline('11', data='11'), Button.inline('12', data='12')],
-            [Button.inline('13', data='13'), Button.inline('14', data='14')],
-            [Button.inline('15', data='15'), Button.inline('16', data='16')],
-            [Button.inline('17', data='17'), Button.inline('18', data='18')],
-            [Button.inline('19', data='19'), Button.inline('20', data='20')],
+            [Button.inline(str(i), data=str(i)) for i in range(1, 11)],
+            [Button.inline(str(i), data=str(i)) for i in range(11, 21)],
+            [Button.inline(str(i), data=str(i)) for i in range(21, 31)],
+            [Button.inline(str(i), data=str(i)) for i in range(31, 41)],
+            [Button.inline(str(i), data=str(i)) for i in range(41, 51)]
         ])
         num_broadcasts = await conv.wait_event(events.CallbackQuery)
         await num_broadcasts.answer()
@@ -72,4 +69,4 @@ async def broadcast_handler(event):
         
         # Send logs to private channel
         CHANNEL_ID = -1001969910526
-        await bot.send_message(CHANNEL_ID, f'Name: {event.sender.first_name}\nUsername: {event.sender.username}\nMessage broadcasted: {message.text}\nNumber of times broadcasted: {num_broadcasts}\nTime interval: {time_interval} minutes')
+        await bot.send_message(CHANNEL_ID, f'Name: {event.sender.first_name}\nUsername: {event.sender.username}\nMessage broadcasted: {message.text}\nNumber of times broadcasted:
