@@ -14,7 +14,7 @@ MEME_API_URL = 'https://api.imgflip.com/caption_image'
 
 @bot.on(events.NewMessage(pattern='/broadcast'))
 async def broadcast_handler(event):
-    if event.sender_id not in AUTH_USERS:
+    if event.sender_id not in AUTH_USERS: #h
         params = {
             'template_id': 61579,
             'username': 'theshashankk',
