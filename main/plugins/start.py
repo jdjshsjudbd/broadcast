@@ -25,10 +25,10 @@ async def start_handler(event):
     user_name = event.sender.username 
     if user_id != AUTH_USER:
         buttons = [
-            [Button.inline("Contact to buy ⬇️")],
-            [types.KeyboardButtonWebView("Shashank", "https://theshashankk.me")],
+            types.KeyboardButtonWebView("Subscribe Now", "https://example.com/subscribe"),
             [Button.url("comrade", url="t.me/xD_Comrade"), Button.url("Shashank", "t.me/maybeshashank")],
         ]
         await bot.send_message(event.chat_id, MSG, buttons=buttons)
     else:
         await bot.send_message(event.chat_id, 'hello master')
+
