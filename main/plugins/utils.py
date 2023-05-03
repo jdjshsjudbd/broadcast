@@ -6,7 +6,8 @@ id = -1001863794904
 
 @bot.on(events.ChatAction)
 async def welcome_handler(event):
-    if event.user_added and event.user_id == bot.uid:
+    me = await bot.get_me()
+    if event.user_added and event.user_id == me.id:
         # Fetch a random quote from the ZenQuotes API
         response = requests.get('https://zenquotes.io/api/random')
         data = response.json()
@@ -24,6 +25,7 @@ async def welcome_handler(event):
 
 @bot.on(events.ChatAction)
 async def my_event_handler(event):
-    if event.user_added and event.user_id == bot.me.id:
+    me = await bot.get_me()
+    if event.user_added and event.user_id == me.id:
         chat = await event.get_chat()
         await bot.send_message(id, f'Bot was added to group {chat.id}')
