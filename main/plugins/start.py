@@ -27,7 +27,7 @@ async def start_handler(event):
     if user_id != AUTH_USER:
         buttons = [
             [Button.inline('Contact now⬇️', data='sdhgsd')],
-            [Button.url("comrade", url="t.me/xD_Comrade"), Button.url("Shashank", "t.me/maybeshashank")],
+            [Button.url("IMMORTAL", url="t.me/maybeimmortal")],
         ]
         await bot.send_file(event.chat_id, file=IMG, caption=MSG, buttons=buttons)
         #kk = types.ReplyKeyboardMarkup(buttons, one_time_keyboard=True)
